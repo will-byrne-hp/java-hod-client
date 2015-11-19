@@ -27,7 +27,7 @@ import java.util.Map;
  */
 interface CreateTextIndexBackend {
 
-    String URL = "/2/api/async/textindex/{indexName}/v1";
+    String URL = "/2/api/async/textindex/{indexName}/v2";
 
     /**
      * Create a text index using the given token
@@ -39,7 +39,7 @@ interface CreateTextIndexBackend {
      */
     @POST(URL)
     Response createTextIndex(
-        @Header("token") AuthenticationToken token,
+        @Header("token") AuthenticationToken<?, ?> token,
         @Path("indexName") String index,
         @Query("flavor") IndexFlavor flavor,
         @QueryMap Map<String, Object> params
